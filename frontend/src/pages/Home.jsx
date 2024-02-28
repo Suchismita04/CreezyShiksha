@@ -1,6 +1,6 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import "./Animetion.css"
+import "./Animation.css"
 
 const Home= () => {
   return (
