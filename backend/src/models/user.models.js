@@ -15,7 +15,7 @@ const userSchema = new Schema(
         password: {
             type: String,
             required: true,
-            unique: true
+           
 
         },
         email: {
@@ -48,13 +48,8 @@ userSchema.pre("save", async function (next) {
     next();
 })
 
-userSchema.methods.isPasswordCorrect= async function(password){
-   try{
-    return await bcrypt.compare(this.password,password)
-   } 
-    catch (error) {
-        throw error; // Handle the error in the calling code
-    }
+userSchema.methods.isPasswordCorrect = async function (password){
+    return await bcrypt.compare(password, this.password)
 }
 
 
@@ -64,20 +59,20 @@ userSchema.methods.generateAccessToken=function (){
         _id:this._id,
         fullName:this.fullName,
         email:this.email,
-    }),
+    },
     process.env.ACCESS_TOKEN_SCECRET,{
         expiresIn: process.env.ACCESS_TOKEN_EXPIRY
-    }
+    });
 }
 
 
 userSchema.methods.generateRefreshToken=function (){
     return Jwt.sign({
         _id:this._id,
-    }),
+    },
     process.env.REFRESH_TOKEN_SCECRET,{
         expiresIn: process.env.REFRESH_TOKEN_EXPIRY
-    }
+    });
 }
 
 
