@@ -3,32 +3,33 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "../styles/style.css";
 import { Link } from 'react-router-dom';
-
+import "../styles/style.css"
 
 const Nav = () => {
   return (
     <>
-    <nav className="navbar navbar-expand-lg bg-body-tertiary">
+    <nav className="navbar navbar-expand-lg">
   <div className="container-fluid">
-    <a className="navbar-brand" href="#">Logo</a>
+    
+    <img src="/main-logo.jpg" alt="error"  className="navbar-brand"  />
     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span className="navbar-toggler-icon"></span>
     </button>
     <div className="collapse navbar-collapse nav-tabs" id="navbarSupportedContent">
       <ul className="navbar-nav me-auto mb-2 mb-lg-0 mx-3">
         <li className="nav-item">
-          <Link className="nav-link active" aria-current="page" to="#">Home</Link>
+          <Link className="nav-link  f-color" aria-current="page" to="/">Home</Link>
         </li>
         <li className="nav-item">
-          <Link className="nav-link" to="#">Collections</Link>
+          <Link className="nav-link f-color" to="/collections">Collections</Link>
         </li>
         <li className="nav-item">
-          <Link className="nav-link" to="#">
+          <Link className="nav-link f-color" to="#">
             Self Assessment
           </Link>
         </li>
         <li className="nav-item">
-          <Link className="nav-link" to='#'>videos</Link>
+          <Link className="nav-link f-color" to='#'>videos</Link>
         </li>
       </ul>
       {/* <div className="d-flex" >

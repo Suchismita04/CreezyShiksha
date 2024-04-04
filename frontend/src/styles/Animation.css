@@ -17,7 +17,7 @@ h2 {
     width: 0;
   }
   to {
-    width: 710px;
+    width: 580px;
   }
 }
 @keyframes blinkTextCursor {
@@ -28,4 +28,5 @@ h2 {
     border-right-color: transparent;
   }
 }
-  
+
+
