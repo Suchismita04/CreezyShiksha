@@ -25,4 +25,9 @@ footer{
 .col-lg{
     width: 20rem;
 }
+.search{
+    top: 31px;
+    position: relative;
+    border-radius: 14px;
+}
 

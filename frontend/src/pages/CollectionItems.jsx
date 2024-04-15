@@ -1,30 +1,25 @@
 import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import "../styles/Cards.css"
 
 const CollectionItems = (props) => {
 
-const {title,description,publisher,imageLinks,bookUrl}=props
+  const { title, description, publisher, imageLinks, bookUrl } = props
 
 
   return (
     <>
-      <div className="card mb-3" >
-        <div className="row g-0">
-          <div className="col-md-4">
-            <img src={imageLinks} className="img-fluid rounded-start" alt="..." />
-          </div>
-          <div className="col-md-8">
-            <div className="card-body">
-              <h5 className="card-title">{title}</h5>
-              <h5 className="card-title">Created By-{publisher}</h5>
-              <p className="card-text">{description}</p>
-               <a href={bookUrl} target='_blank' rel="noreferrer" className="btn btn-sm btn-dark">Read More</a>
-              <p className="card-text"><small className="text-body-secondary">Last updated 3 mins ago</small></p>
-
-            </div>
-          </div>
+    
+      <div className="card mx-3 my-2 mb-3" style={{"width":"16rem","flex":"1" }}>
+        <img src={imageLinks} className="card-img-top img-fluid fs-6" alt="..." style={{"height":"auto"}}/>
+        <div className="card-body fs-6">
+          <h5 className="card-title fs-6">{title}</h5>
+          {/* <h4 className="card-text">Created By-{publisher}</h4> */}
+          <p className="card-text fs-6">{description}...</p>
+          <a href={bookUrl} className="btn btn-primary">Read More</a>
         </div>
       </div>
+
     </>
   )
 
