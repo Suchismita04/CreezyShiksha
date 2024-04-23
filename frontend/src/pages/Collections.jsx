@@ -5,30 +5,32 @@ import axios from 'axios';
 import CollectionItems from './CollectionItems';
 import Spinner from '../components/Spinner';
 import InfiniteScroll from 'react-infinite-scroll-component'
-import { Suspense } from 'react';
+
 
 // AIzaSyAd2EI8WVjsJGHDOIn6SivOOmY9hgTUlEs
 
 const Collections = () => {
+
   const [books, setBooks] = useState([])
   const [totalItems, setTotalItems] = useState(0)
   const [page, setpage] = useState(1)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
-  const [searchTerm, setSearchTerm] = useState('java')
+  const [searchTerm, setSearchTerm] = useState('javascript')
 
 
   const updateBooks = async (searchTerm) => {
     try {
+
+      if (!searchTerm.trim()) {
+        setBooks([]);
+        setLoading(false);
+        return;
+      }
       const url = ` https://www.googleapis.com/books/v1/volumes?q=${searchTerm}&key=AIzaSyAd2EI8WVjsJGHDOIn6SivOOmY9hgTUlEs`;
       const response = await axios.get(url);
       setBooks(response.data.items)
       setTotalItems(response.data.length)
-      if (!searchTerm.trim()) {
-        // If search term is empty or contains only whitespace, return early
-        setLoading(false);
-        return;
-      }
     }
     catch {
       setError(error)
@@ -58,15 +60,16 @@ const Collections = () => {
     catch (error) {
       setError(error.message)
     }
+    finally {
+      setLoading(false)
+    }
   }
   const handleSeachTermChenge = (event) => {
     event.preventDefault()
     setSearchTerm(event.target.value)
   }
 
-  const handleSearchTermSubmit = () => {
-    updateBooks(searchTerm);
-  };
+
 
 
 
@@ -75,15 +78,20 @@ const Collections = () => {
       <div>
         <form className="d-flex search" role="search">
           <input className="form-control me-2 " type="search" placeholder="Search Books Here" aria-label="Search" value={searchTerm} onChange={handleSeachTermChenge} />
-          <button className="btn btn-outline-success" type="submit" onSubmit={handleSearchTermSubmit}>Search</button>
         </form>
       </div>
-      <div className="container">
+      <div className="container" style={{
+        "margin": "63px",
+        "padding": " 25px",
+
+        "position": "relative",
+        "right": "30px"
+      }}>
         {loading && <Spinner />}
         <InfiniteScroll
           dataLength={books.length}
           next={fetchMore}
-          hasMore={books.length != totalItems}
+          hasMore={books.length < totalItems}
           loader={<Spinner />}
           style={{ 'overflow': 'hidden' }}
         >

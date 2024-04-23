@@ -1,3 +1,4 @@
-.card:hover{
-  box-shadow: purple;
+.card{
+  background-color: rgba(78, 12, 116, 0.658);
+  color: white;
 }

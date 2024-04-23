@@ -10,6 +10,7 @@ body{
     background-image: linear-gradient(to right, rgba(132, 74, 240, 0), rgba(255, 0, 0, 1));
     background-color: #870ae5;
     width: 100vw;
+  
 }
 .f-color{
     color: white;
@@ -18,6 +19,11 @@ body{
     background-image: linear-gradient(to right, rgba(132, 74, 240, 0), rgba(255, 0, 0, 1));
     background-color: #870ae5; 
 }
+.nav-link{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+} 
 footer{
     width: 100%;
     height: 45%;
@@ -26,8 +32,16 @@ footer{
     width: 20rem;
 }
 .search{
-    top: 31px;
+    position: absolute;
+    top: 87px;
+    left: 104px;
+    width: 81%;/* Adjust background color as needed */
+  z-index: 999; 
+}
+.large-icon{
+    font-size: 28px;
     position: relative;
-    border-radius: 14px;
+    right: 36px;
+    top: 7px;
 }
 

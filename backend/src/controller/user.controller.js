@@ -123,6 +123,7 @@ const logInUser = asyncHandler(async (req, res) => {
 })
 
 const forgetPassword = asyncHandler(async (req, res) => {
+    //Error-pending
     const { email, newPassword } = req.body;
     console.log("Email =",email);
     console.log("password =",newPassword);
@@ -130,9 +131,9 @@ const forgetPassword = asyncHandler(async (req, res) => {
         throw new ApiError(400, "email or password is required")
     }
     const user = await User.findById(req.user?._id)
-    console.log("User=",user)
+  
     if (!user) { // Check if user is null
-        throw new ApiError(404, "User not found"); // Handle the scenario where user is not found
+        throw new ApiError(404, "User not found");
     }
     user.password = newPassword
     await user.save({ validateBeforeSave: false })
@@ -140,6 +141,16 @@ const forgetPassword = asyncHandler(async (req, res) => {
 
 })
 
+const getUserDetails=asyncHandler(async(req,res)=>{
+    try {
+         const data=await User.find()
+         res.json(data)
+    } catch (error) {
+        throw new ApiError(500,"Server Error")
+    }
+
+})
 
 
-export { signInUser, logInUser, forgetPassword }
+
+export { signInUser, logInUser, forgetPassword,getUserDetails }

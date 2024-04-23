@@ -1,8 +1,11 @@
 // src/components/Navbar.jsx
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCircleUser} from '@fortawesome/free-solid-svg-icons';
 import "../styles/style.css";
 import { Link } from 'react-router-dom';
+
 import "../styles/style.css"
 
 const Nav = () => {
@@ -32,9 +35,15 @@ const Nav = () => {
           <Link className="nav-link f-color" to='#'>videos</Link>
         </li>
       </ul>
-      {/* <div className="d-flex" >
-      <a className="nav-link rounded-circle zindex-fixed bg-success" href='#'></a>
-      </div> */}
+      <ul>
+
+      
+    <Link className=" f-color" to='/myAccount'><FontAwesomeIcon className='large-icon' icon={faCircleUser} /></Link> 
+     
+
+      </ul>
+    
+     
     </div>
   </div>
 </nav>

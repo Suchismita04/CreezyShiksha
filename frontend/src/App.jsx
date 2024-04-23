@@ -8,18 +8,9 @@ import LogIn from './pages/LogIn.jsx';
 import Footer from './components/Footer.jsx';
 import ForgetPassword from './pages/ForgetPassword.jsx';
 import Collections from './pages/Collections.jsx';
+import MyAccount from './pages/MyAccount.jsx';
 
 function App() {
-  const [isFormOpen, setIsFormOpen] = useState(false);
-
-  const handleOpenForm = () => {
-    setIsFormOpen(true);
-  };
-
-  const handleCloseForm = () => {
-    setIsFormOpen(false);
-  };
-
  
 
   return (
@@ -27,11 +18,12 @@ function App() {
       <div>
         <Nav />
         <Routes>
-          <Route path="/" element={<Home showForm={handleOpenForm} />} />
-          <Route path="/form/signIn" element={<SignInForm isOpen={isFormOpen} onClose={handleCloseForm} />} />
+          <Route path="/" element={<Home  />} />
+          <Route path="/form/signIn" element={<SignInForm  />} />
           <Route path="/form/logIn" element={<LogIn/>} />
           <Route path="/form/forgetPassword" element={<ForgetPassword/>} />
           <Route path='/collections' element={<Collections/>}/>
+          <Route path='/myAccount' element={<MyAccount/>}/>
         </Routes>
         {/* <Footer/> */}
       </div>
