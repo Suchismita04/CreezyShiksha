@@ -14,6 +14,10 @@ function MyAccount() {
   const fetchData = async () => {
     try {
       const token = localStorage.getItem('token');
+      if(!token)
+      {
+        throw new Error("Token not found")
+      }
       const url = await axios.post('/api/v1/users/getUserDetails', {}, {
         headers: {
           Authorization: `Bearer ${token}` // Send the token in the Authorization header

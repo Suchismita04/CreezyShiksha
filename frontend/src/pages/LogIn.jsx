@@ -10,15 +10,18 @@ const LogIn = () => {
 })
    
     const handleSubmit = async (event) => {
-        event.preventDefult()
+        event.preventDefault();
         try {
             const responce = await axios.post('/api/v1/users/logIn', logInFormData)
             if (responce.status === 200) {
                 setlogInFormData(responce.data.message)
+                const token=responce.data.token
+                 localStorage.setItem('token',token)
             }
             else {
                 setlogInFormData(responce.data.message)
             }
+           
         } catch (error) {
             console.log("Error during logIn", error)
         }
