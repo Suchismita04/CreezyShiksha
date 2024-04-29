@@ -60,7 +60,7 @@ userSchema.methods.generateAccessToken=function (){
         fullName:this.fullName,
         email:this.email,
     },
-    process.env.ACCESS_TOKEN_SCECRET,{
+    process.env.ACCESS_TOKEN_SECRET,{
         expiresIn: process.env.ACCESS_TOKEN_EXPIRY
     });
 }
@@ -70,7 +70,7 @@ userSchema.methods.generateRefreshToken=function (){
     return Jwt.sign({
         _id:this._id,
     },
-    process.env.REFRESH_TOKEN_SCECRET,{
+    process.env.REFRESH_TOKEN_SECRET,{
         expiresIn: process.env.REFRESH_TOKEN_EXPIRY
     });
 }

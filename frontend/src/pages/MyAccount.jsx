@@ -14,6 +14,8 @@ function MyAccount() {
   const fetchData = async () => {
     try {
       const token = localStorage.getItem('token');
+      console.log("Local storage",localStorage.getItem('token'))
+      console.log("Token:",token)
       if(!token)
       {
         throw new Error("Token not found")
