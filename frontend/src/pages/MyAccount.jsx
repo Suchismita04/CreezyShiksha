@@ -5,36 +5,36 @@ import { faCircleUser } from '@fortawesome/free-solid-svg-icons';
 import "../styles/Cards.css"
 import axios from 'axios'
 function MyAccount() {
-  const [data, setData] = useState([])
+  const [userData, setUserData] = useState([]);
+
   useEffect(() => {
-    fetchData()
-      , []
-  })
+    const fetchData = async () => {
+      try {
+        // Retrieve the token from localStorage
+        const token = localStorage.getItem('token');
+        console.log("token from myAccount:",token)
 
-  const fetchData = async () => {
-    try {
-      const token = localStorage.getItem('token');
-      console.log("Local storage",localStorage.getItem('token'))
-      console.log("Token:",token)
-      if(!token)
-      {
-        throw new Error("Token not found")
+        // Make a request to the server to fetch user data
+        const response = await axios.post('/api/v1/users/getUserDetails', {}, {
+          headers: {
+            Authorization: `Bearer ${token}` // Send the token in the Authorization header
+          }
+        });
+        console.log("res from my account:",response)
+
+        // Set the user data in state
+      console.log( "res.data",setUserData(response.data.user))
+      } catch (error) {
+        console.error('Error fetching user data:', error.message);
       }
-      const url = await axios.post('/api/v1/users/getUserDetails', {}, {
-        headers: {
-          Authorization: `Bearer ${token}` // Send the token in the Authorization header
-        }
-      })
-      setData(url.data)
-    } catch (error) {
-      console.log("Error in fatching data", error)
-    }
+    };
 
-  }
+    fetchData();
+  }, []);
   return (
     <>
       <div className="card round" style={{ "width": "33rem" }}>
-        {Array.isArray(data)&&   data.map((element) => {
+        {userData &&   userData.map((element) => {
           return <div className="container" key={element._id}>
       <FontAwesomeIcon className='large-icon' icon={faCircleUser}  style={{   " position": "relative",
     "left": "0px","fontSize":"9rem"}}/>

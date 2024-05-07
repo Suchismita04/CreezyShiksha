@@ -50,7 +50,7 @@ const Collections = () => {
       if (!online) {
         throw new Error('No internet connection');
       }
-      const url = ` https://www.googleapis.com/books/v1/volumes?q=${searchTerm}&key=AIzaSyAd2EI8WVjsJGHDOIn6SivOOmY9hgTUlEs`;
+      const url = ` https://www.googleapis.com/books/v1/volumes?q=${searchTerm}&key=${process.env.BOOK_API_KEY}`;
       const response = await axios.get(url);
       setpage(page + 1)
       setBooks(books.concat(response.data.items))
