@@ -1,7 +1,7 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { NavLink } from 'react-router-dom';
-import "../styles/Animation.css"
+import "../styles/Home.css"
 import "../styles/style.css"
 
 
@@ -14,10 +14,10 @@ const Home = () => {
             <div className='col-lg'>
               <h1 className='d-flex my-3 f-color '>Hey there,</h1>
               <h2 className='d-flex my-2 animated-text f-color '>Welcome to CreezyShiksha</h2>
-              <NavLink to="/form/signIn" role='button ' className="btn my-4 btn-primary" style={{ "position": "sticky", "right": "68rem", "backgroundColor": "black" }}>Sign In</NavLink>
+              <NavLink to="/form/signIn" role='button ' className="btn my-4 btn-primary" >Sign In</NavLink>
             </div>
-            <div className='col-lg '>
-              <img src="/HomeSide-icon.png" alt="error" />
+            <div className='col-lg image'>
+              <img src="/HomeImg.png" alt="error" />
              
             </div>
           </div>

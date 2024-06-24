@@ -28,5 +28,15 @@ h2 {
     border-right-color: transparent;
   }
 }
+.image{
+  top: 3px;
+}
+.btn{
+  position: sticky;
+   right: 68rem; 
+  background-color: rgb(92, 5, 100) ;
+  border: none;
+}
+
 
 

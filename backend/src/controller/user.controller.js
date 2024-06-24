@@ -71,8 +71,7 @@ const signInUser = asyncHandler(async (req, res) => {
         new ApiResponse(200, {
             _id: createdUser._id,
             fullName: createdUser.fullName,
-            email: createdUser.email,
-            dp: createdUser.dp,
+            email: createdUser.email
         }, "User is successfully created")
     );
 

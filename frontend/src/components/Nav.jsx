@@ -27,12 +27,12 @@ const Nav = () => {
           <Link className="nav-link f-color" to="/collections">Collections</Link>
         </li>
         <li className="nav-item">
-          <Link className="nav-link f-color" to="#">
+          <Link className="nav-link f-color" to="/selfAssessment">
             Self Assessment
           </Link>
         </li>
         <li className="nav-item">
-          <Link className="nav-link f-color" to='#'>About Us</Link>
+          <Link className="nav-link f-color" to='/aboutUs'>About Us</Link>
         </li>
       </ul>
       <ul>

@@ -1,0 +1,20 @@
+.container1{
+    display: grid;
+   
+    grid-template-columns: 50px 50px;
+    grid-template-rows: auto;
+    grid-template-areas: 
+    "container container img1 img1 ";
+
+}
+.content{
+    color: white;
+    text-align: left;
+    position: relative;
+    right: 36rem;
+    height: 20px;
+    width: 38rem;
+}
+.des{
+    padding: 2rem 0px
+}
