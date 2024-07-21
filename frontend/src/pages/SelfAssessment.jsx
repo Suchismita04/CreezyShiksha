@@ -11,7 +11,7 @@ function SelfAssessment() {
         try {
             const url = "http://localhost:5173/SampleTopicName.json"
             const res = await axios.get(url)
-            console.log("Data=", res.data)
+            // console.log("Data=", res.data)
 
             if (res.data && res.data.topicName && Array.isArray(res.data.topicName)) {
                 setAssessmentTopic(res.data.topicName);
@@ -35,7 +35,7 @@ function SelfAssessment() {
             <div className='d-flex flex-wrap justify-content-center my-3 p-3'>
                 {Array.isArray(assessmentTopic) && assessmentTopic.map((element, index) => {
                 return <div key={index} className='mx-5 p-1 my-2'>
-                    <SelfAssessItem name={element.name} topicImg={element.topicImg} />
+                    <SelfAssessItem name={element.name} topicImg={element.topicImg} link={element.link} />
                 </div>
                  })}
             </div>

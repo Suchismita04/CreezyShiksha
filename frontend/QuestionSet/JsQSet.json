@@ -1,0 +1,56 @@
+{
+   "totalQ":5,
+    "jsQSet": [
+        
+        {
+            "qName": " JSON stands for _______.",
+            "options": [
+                "JavaScript Object Notation",
+                "Java Object Notation",
+                "JavaScript Object Normalization",
+                "JavaScript Object-Oriented Notation"
+            ],
+            "correctOption":"JavaScript Object Notation"
+        },
+        {
+            "qName": "  JSON is a _____ for storing and transporting data.",
+            "options": [
+                "xml format",
+                "text format",
+                "JavaScript",
+                "php format"
+            ],
+            "correctOption":"text format"
+        },
+        {
+            "qName": " Which type of JavaScript language is ___",
+            "options": [
+                " Object-Oriented",
+                "Object-Based",
+                "Assembly-language",
+                "High-level"
+            ],
+            "correctOption":"Object-Based"
+        },
+        {
+            "qName": "Which one of the following also known as Conditional Expression:",
+            "options": [
+                "Alternative to if-else",
+                "Switch statement",
+                "If-then-else statement",
+                "immediate if"
+            ],
+            "correctOption":"immediate if"
+        },
+        {
+            "qName": "In JavaScript, what is a block of statement?",
+            "options": [
+                " Conditional block",
+                "block that combines a number of statements into a single compound statement",
+                "both conditional block and a single statement",
+                "block that contains a single statement"
+            ],
+            "correctOption":"block that combines a number of statements into a single compound statement"
+        }
+    ]
+}

@@ -1,0 +1,16 @@
+.prev{
+    position: relative;
+    left: 24rem;
+}
+.next{
+    position: relative;
+    right: 25rem;
+}
+.question{
+    position: relative;
+    margin: 3rem;
+}
+.submitQ{
+    position: relative;
+    left: 22rem;
+}

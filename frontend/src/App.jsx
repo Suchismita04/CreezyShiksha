@@ -11,6 +11,8 @@ import Collections from './pages/Collections.jsx';
 import MyAccount from './pages/MyAccount.jsx';
 import AboutUs from './pages/AboutUs.jsx';
 import SelfAssessment from './pages/SelfAssessment.jsx';
+import QuestionSet from './pages/QuestionSet.jsx';
+import ShowMarks from './pages/ShowMarks.jsx';
 
 function App() {
  
@@ -28,6 +30,8 @@ function App() {
           <Route path='/myAccount' element={<MyAccount/>}/>
           <Route path='/aboutUs' element={<AboutUs/>}/>
           <Route path='/selfAssessment' element={<SelfAssessment/>}/>
+          <Route path='/QuestionSet/:link' element={<QuestionSet/>}/>
+          <Route path='/ShowMarks/:result' element={<ShowMarks/>}/>
         </Routes>
         {/* <Footer/> */}
       </div>

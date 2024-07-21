@@ -3,33 +3,39 @@
         {
             "id":"1",
             "name":"Javascript",
-            "topicImg":"public/signIn-dp.jpg"
+            "topicImg":"public/signIn-dp.jpg",
+            "link":"JsQSet.json"
         },
         {
             "id":"2",
             "name":"C",
-            "topicImg":"public/signIn-dp.jpg"
+            "topicImg":"public/signIn-dp.jpg",
+            "link":"CQSet.json"
 
         },
         {
             "id":"3",
             "name":"HTML",
-            "topicImg":"public/signIn-dp.jpg"
+            "topicImg":"public/signIn-dp.jpg",
+            "link":"HTMLQSet.json"
         },
         {
             "id":"4",
             "name":"Java",
-            "topicImg":"public/signIn-dp.jpg"
+            "topicImg":"public/signIn-dp.jpg",
+            "link":"JavaQSet.json"
         },
         {
             "id":"5",
             "name":"Python",
-            "topicImg":"public/signIn-dp.jpg"
+            "topicImg":"public/signIn-dp.jpg",
+            "link":"PythonQSet.json"
         },
         {
             "id":"6",
             "name":"React",
-            "topicImg":"public/signIn-dp.jpg"
+            "topicImg":"public/signIn-dp.jpg",
+            "link":"ReactQSet.json"
         }
     ]
       
