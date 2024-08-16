@@ -5,6 +5,7 @@ import axios from 'axios';
 import CollectionItems from './CollectionItems';
 import Spinner from '../components/Spinner';
 import InfiniteScroll from 'react-infinite-scroll-component'
+import { useNavigate } from 'react-router-dom';
 
 
 // AIzaSyAd2EI8WVjsJGHDOIn6SivOOmY9hgTUlEs
@@ -17,6 +18,9 @@ const Collections = () => {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
   const [searchTerm, setSearchTerm] = useState('javascript')
+  const navigate = useNavigate()
+  const [accessToken,setAccessToken]=useState(false)
+
 
 
   const updateBooks = async (searchTerm) => {
@@ -69,8 +73,49 @@ const Collections = () => {
     setSearchTerm(event.target.value)
   }
 
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    // console.log("Token from collections", token)
+    if (!token) {
+      navigate('/form/login')
+    }
+    else {
+      fatchAccessToken(token)
+    }
 
+  }, [navigate])
 
+  const fatchAccessToken = async (token) => {
+  
+    try {
+      const tokenData = await axios('/api/v1/users/verifyToken', {
+        method: 'GET',
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          "Content-Type": 'application/json'
+        }
+      }
+     
+    )
+    // console.log("Token data",tokenData)
+    // console.log("token status code:",tokenData.status)
+    if (tokenData.status === 200) {
+      // console.log("token status code:",tokenData.status)
+      setAccessToken(true)
+      // console.log("access token status:",accessToken)
+      
+      // const data= await tokenData.json();
+      // console.log("got token Data from collections",data)
+    }
+    else{
+      navigate('/form/login')
+      return null
+    }
+    } catch (error) {
+          console.log('Error fetching protected data:', error)
+          navigate('/form/login')
+    }
+  }
 
 
   return (

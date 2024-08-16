@@ -78,10 +78,10 @@ useEffect(()=>{
             }
            }
        
-        // console.log("correct Option:",question[questionIndex].correctOption)
-        // console.log("Total Marks:",marks)
-        // console.log("Option change for question", questionIndex);
-        // console.log("Selected option:", selectedOption===question[questionIndex].correctOption);
+        console.log("correct Option:",question[questionIndex].correctOption)
+        console.log("Total Marks:",marks)
+        console.log("Option change for question", questionIndex);
+        console.log("Selected option:", selectedOption===question[questionIndex].correctOption);
     }
     
     useEffect(()=>{
@@ -90,8 +90,21 @@ useEffect(()=>{
     useEffect(() => {
         // console.log("checked:", checkedOption); 
     }, [checkedOption]);
+
+    const marksObj=JSON.stringify([
+        {
+           name:"Obtained Marks",
+            value:marks,
+        },
+        {
+            name:"Total Marks",
+           value:15,
+           
+        }
+    ])
     return (
         <>
+        <h4>MCQ on js </h4>
             {question.length>0 && 
                  (<div className="container text-white" key={page}>
                     <h5 className='question'>{page + 1}){question[page].qName}</h5>
@@ -122,11 +135,10 @@ useEffect(()=>{
                         <button disabled={page>=question.length-1} type="button" className="btn btn-primary prev" onClick={handleNext}>Next</button>
                         <button disabled={page<=0} type="button" className="btn btn-primary next" onClick={handlePrev}>Previous</button>
                         {page>=question.length-1 && (
-                             <Link  type="button" to={`/ShowMarks/:${marks}`} className="btn btn-primary submitQ" data-bs-toggle="tooltip" data-bs-placement="top"
+                             <Link  type="button" to={`/ShowMarks/${marksObj}`} className="btn btn-primary submitQ" data-bs-toggle="tooltip" data-bs-placement="top"
                              data-bs-custom-class="custom-tooltip"
                              data-bs-title="Do you want to submit this exam.">
                              Submit
-                             
                          </Link>
                         )}
                     </div>

@@ -31,7 +31,7 @@ function App() {
           <Route path='/aboutUs' element={<AboutUs/>}/>
           <Route path='/selfAssessment' element={<SelfAssessment/>}/>
           <Route path='/QuestionSet/:link' element={<QuestionSet/>}/>
-          <Route path='/ShowMarks/:result' element={<ShowMarks/>}/>
+          <Route path='/ShowMarks/:marks' element={<ShowMarks/>}/>
         </Routes>
         {/* <Footer/> */}
       </div>
