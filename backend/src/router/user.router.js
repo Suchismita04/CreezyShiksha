@@ -13,5 +13,8 @@ router.route("/signIn").post(
 router.route("/logIn").post(logInUser)
 router.route("/forgetPassword").post(forgetPassword)
 router.route("/getUserDetails").post(verifyJWT,getUserDetails)
+router.route("/verifyToken").get(verifyJWT,(req,res)=>{
+    res.status(200).json({success:true})
+})
 
 export default router;
