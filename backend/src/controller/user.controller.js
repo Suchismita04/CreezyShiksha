@@ -48,7 +48,7 @@ const signInUser = asyncHandler(async (req, res) => {
     if (req.file && Array.isArray(req.file.dp) && req.file.dp.length > 0) {
         dpLocalPath = req.file.dp[0].path
     }
-    console.log(dpLocalPath)
+    
 
     //uploade them into cloudinary
     const dp = await uploadeOnCloudinary(dpLocalPath)
@@ -129,7 +129,8 @@ const forgetPassword = asyncHandler(async (req, res) => {
     if (!email && !newPassword) {
         throw new ApiError(400, "email or password is required")
     }
-    const user = await User.findById(req.user?._id)
+    const user = await User.findOne({email})
+    console.log("user from forgate password:",user)
   
     if (!user) { // Check if user is null
         throw new ApiError(404, "User not found");
