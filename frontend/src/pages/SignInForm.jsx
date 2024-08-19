@@ -26,7 +26,7 @@ const SignInForm = () => {
         setError(newError)
         try {
             console.log("before  hit the api")
-            const response = await api.post('/api/v1/users/signIn', formData);
+            const response = await api.post('/v1/users/signIn', formData);
             console.log("after hit the api")
             if (Object.keys(newError).length === 0) {
                 if (response.status === 201) {

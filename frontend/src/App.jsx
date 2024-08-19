@@ -8,7 +8,6 @@ import LogIn from './pages/LogIn.jsx';
 // import Footer from './components/Footer.jsx';
 import ForgetPassword from './pages/ForgetPassword.jsx';
 import Collections from './pages/Collections.jsx';
-import MyAccount from './pages/MyAccount.jsx';
 import AboutUs from './pages/AboutUs.jsx';
 import SelfAssessment from './pages/SelfAssessment.jsx';
 import QuestionSet from './pages/QuestionSet.jsx';
@@ -27,7 +26,6 @@ function App() {
           <Route path="/form/logIn" element={<LogIn/>} />
           <Route path="/form/forgetPassword" element={<ForgetPassword/>} />
           <Route path='/collections' element={<Collections/>}/>
-          <Route path='/myAccount' element={<MyAccount/>}/>
           <Route path='/aboutUs' element={<AboutUs/>}/>
           <Route path='/selfAssessment' element={<SelfAssessment/>}/>
           <Route path='/QuestionSet/:link' element={<QuestionSet/>}/>
