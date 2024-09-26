@@ -24,10 +24,9 @@ const SignInForm = () => {
 
 
     const storeToken = (token) => {
-        // console.log("Received token:", token); 
+      
         if (token) {
             localStorage.setItem('token', token);
-            // console.log("Token stored in localStorage:", token); 
         } else {
             console.error("Error: Token is undefined or null");
         }
@@ -42,17 +41,14 @@ const SignInForm = () => {
          
             if (Object.keys(newError).length === 0) {
                 if (response.status === 201) {
-                    // Handle successful sign-in
+                  
                     
                     navigate('/')
                     alert('Sign-in successful')
                     const logInToken = response.data.data.accessToken
                     storeToken(logInToken)
                 } else {
-                    
-                    // navigate('/')
-                    
-                    console.log("Hello from sign in")
+                  
                     console.error(`Sign-in failed: ${response.data.message}`);
                 }
             }
@@ -62,7 +58,7 @@ const SignInForm = () => {
             }
 
         } catch (error) {
-            // navigate('/')
+          
             alert(" User is already existed !!!!")
             console.error('Error during sign-in:', error);
         }

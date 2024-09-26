@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { NavLink } from 'react-router-dom';
 import "../styles/Home.css"
 import "../styles/style.css"
-// import "../styles/Responsive.css"
+
 
 
 const Home = () => {

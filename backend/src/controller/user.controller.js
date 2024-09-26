@@ -2,7 +2,6 @@ import { asyncHandler } from "../utils/asyncHandler.js"
 import { ApiError } from "../utils/ApiError.js"
 import { ApiResponse } from "../utils/ApiResponse.js"
 import { User } from "../models/user.models.js"
-import { uploadeOnCloudinary } from "../utils/cloudinary.js"
 
 //problem in upload pic
 
@@ -25,7 +24,7 @@ const signInUser = asyncHandler(async (req, res) => {
 
     //get details from frontend
     const { fullName, email, password } = req.body
-    // console.log("this is data:", req.body)
+    
 
     //check all fields 
     if ([fullName, email, password].some((field) =>
@@ -56,15 +55,14 @@ const signInUser = asyncHandler(async (req, res) => {
         throw new ApiError(500, "Something is went wrong while registaring user")
     }
 
-    // const {accessToken}= await generateAccessAndRefreshToken(createdUser._id)
-    // console.log("access token",accessToken)
+   
 
     return res.status(201).json(
         new ApiResponse(200, {
             _id: createdUser._id,
             fullName: createdUser.fullName,
             email: createdUser.email,
-            // accessToken
+          
         }, "User is successfully created")
     );
 
@@ -114,44 +112,22 @@ const logInUser = asyncHandler(async (req, res) => {
 
 })
 
-const forgetPassword = asyncHandler(async (req, res) => {
-    //Error-pending
-    const { email, newPassword } = req.body;
-    console.log("Email =",email);
-    console.log("password =",newPassword);
-    if (!email && !newPassword) {
-        throw new ApiError(400, "email or password is required")
-    }
-    const user = await User.findOne({email})
-    console.log("user from forgate password:",user)
-  
-    if (!user) { // Check if user is null
-        throw new ApiError(404, "User not found");
-    }
-    user.password = newPassword
-    await user.save({ validateBeforeSave: false })
-    return res.status(200).json(new ApiResponse(200, {}, "Password Changed Successfully"))
 
-})
 
 const logOutUser=asyncHandler(async(req,res)=>{
-    // console.log("Hello from log Out")
  const authorizationHeader=req.headers.authorization;
-//  console.log("headers:",req.headers)
-//  console.log("authorizationHeader",authorizationHeader)
+
  
  if (authorizationHeader) {
     const token = authorizationHeader.split(' ')[1];
-    // Process the token here
-    console.log('Token:', token);
+  
      res.status(200).json({message:'Logged Out Successfully'})
   } else {
-    // Handle the case where the token is missing
-    console.error('Token not found in headers');
+   
     throw new ApiError( 401, 'Authorization token missing')
   }
 })
 
 
 
-export { signInUser, logInUser, forgetPassword,logOutUser }
+export { signInUser, logInUser,logOutUser }

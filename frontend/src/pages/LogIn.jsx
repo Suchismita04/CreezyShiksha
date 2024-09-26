@@ -18,10 +18,8 @@ const LogIn = () => {
 
 
     const storeToken = (token) => {
-        // console.log("Received token:", token); 
         if (token) {
             localStorage.setItem('token', token);
-            // console.log("Token stored in localStorage:", token); 
         } else {
             console.error("Error: Token is undefined or null");
         }
@@ -66,7 +64,6 @@ const LogIn = () => {
         try {
 
             const response = await axios.post('/api/v1/users/logIn', logInFormData)
-            // console.log("response from log in ui",response)
 
             if (response.status == 200) {
                 setlogInFormData(response.data.message)
@@ -78,12 +75,11 @@ const LogIn = () => {
             else {
 
                 console.error("Login failed. Status:", response.status);
-                // Assuming response.data.message contains an error message
                 setlogInFormData(response.data.message);
                 alert(response.data.message)
             }
             navigate('/')
-            // notyf.success("You're logged in successfully")
+           
             alert("You're logged in successfully !!!!")
 
 
@@ -91,13 +87,9 @@ const LogIn = () => {
             console.log("Error during logIn", error)
         }
     }
-    // const handleButtonClick = (event) => {
-
-    //     handleSubmit(event)
-
-    // }
+  
     const handleChange = (event) => {
-        // console.log("Name", event.target.value)
+       
         return setlogInFormData({ ...logInFormData, [event.target.name]: event.target.value })
     }
     return (
