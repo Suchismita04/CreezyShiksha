@@ -70,9 +70,8 @@ const LogIn = () => {
 
             if (response.status == 200) {
                 setlogInFormData(response.data.message)
-                // console.log("user data:",response.data.data.user)
                 const logInToken = response.data.data.accessToken
-                // console.log("access token from login:",logInToken)
+             
                 storeToken(logInToken)
 
             }
@@ -81,6 +80,7 @@ const LogIn = () => {
                 console.error("Login failed. Status:", response.status);
                 // Assuming response.data.message contains an error message
                 setlogInFormData(response.data.message);
+                alert(response.data.message)
             }
             navigate('/')
             // notyf.success("You're logged in successfully")
@@ -103,6 +103,7 @@ const LogIn = () => {
     return (
         <>
             <div >
+                <h3 className='my-4'>Welcome Back</h3>
                 <form action="/api/v1/users/logIn" onSubmit={handleSubmit} method="post" className='container border border-success-subtle rounded mx-2 my-3'>
                     <img src="/login-icon.jpg" alt="login-icon" className='d-flex img-fluid logIn-Img' />
                     <div className="input-group flex-nowrap my-3 ">
@@ -116,12 +117,8 @@ const LogIn = () => {
                     </div>
                     {validationError.password && <div className="text-light">{validationError.password}</div>}
                     <button  className="btn btn-primary my-3 rounded" type="submit" >LogIn</button>
-                    <Link to="/form/forgetPassword" className='text-decoration-underline d-flex' style={{
-                        "position": "relative",
-                        "left": "68px",
-                        "color": "white"
-                    }}>Forget Password?</Link>
-                    <p className='secondary-text-emphasis f-color'>Create an account <Link to="/form/signIn" className='primary text-decoration-underline f-color'>SignIn</Link></p>
+                    
+                    <p className='secondary-text-emphasis f-color'>Create an account? <Link to="/form/signIn" className='primary text-decoration-underline f-color'>SignIn</Link></p>
                 </form>
             </div>
         </>

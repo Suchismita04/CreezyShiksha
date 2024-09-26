@@ -1,6 +1,5 @@
 
-node_modules
-.env
+
 
 # Edit at https://www.toptal.com/developers/gitignore?templates=node
 
@@ -144,4 +143,5 @@ dist
 # SvelteKit build / generate output
 .svelte-kit
 
-# End of https://www.toptal.com/developers/gitignore/api/node
+# End of https://www.toptal.com/developers/gitignore/api/nodenode_modules
+.env

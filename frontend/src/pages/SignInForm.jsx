@@ -20,24 +20,38 @@ const SignInForm = () => {
         baseURL: '/api', // Check this URL
         withCredentials: true,
     });
+
+
+
+    const storeToken = (token) => {
+        // console.log("Received token:", token); 
+        if (token) {
+            localStorage.setItem('token', token);
+            // console.log("Token stored in localStorage:", token); 
+        } else {
+            console.error("Error: Token is undefined or null");
+        }
+    };
     const handleSubmit = async (e) => {
         e.preventDefault();
         const newError = validateForm(formData);
         setError(newError)
         try {
-            console.log("before  hit the api")
+            
             const response = await api.post('/v1/users/signIn', formData);
-            console.log("after hit the api")
+         
             if (Object.keys(newError).length === 0) {
                 if (response.status === 201) {
                     // Handle successful sign-in
-                    setSuccessMessage('Sign-in successful');
-                    console.log("success message:", successMessage)
-                } else {
-                    // Handle sign-in failure
+                    
                     navigate('/')
-                    // notyf.success("You're logged in successfully")
-                    alert(" User is already existed !!!!")
+                    alert('Sign-in successful')
+                    const logInToken = response.data.data.accessToken
+                    storeToken(logInToken)
+                } else {
+                    
+                    // navigate('/')
+                    
                     console.log("Hello from sign in")
                     console.error(`Sign-in failed: ${response.data.message}`);
                 }
@@ -49,6 +63,7 @@ const SignInForm = () => {
 
         } catch (error) {
             // navigate('/')
+            alert(" User is already existed !!!!")
             console.error('Error during sign-in:', error);
         }
     };
@@ -78,6 +93,8 @@ const SignInForm = () => {
     return (
         <>
             <div >
+
+                <h3 className='my-4'>Register Yourself</h3>
                 <form action='/api/v1/users/signIn' onSubmit={handleSubmit} method="post" className='container needs-validation border border-success-subtle rounded mx-2 my-7' noValidate>
                     <img src="/signIn-dp.jpg" alt="dp" />
                     <div className="input-group flex-nowrap my-3 ">

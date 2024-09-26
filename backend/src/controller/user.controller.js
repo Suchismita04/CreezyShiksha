@@ -25,7 +25,7 @@ const signInUser = asyncHandler(async (req, res) => {
 
     //get details from frontend
     const { fullName, email, password } = req.body
-    console.log("this is data:", req.body)
+    // console.log("this is data:", req.body)
 
     //check all fields 
     if ([fullName, email, password].some((field) =>
@@ -43,35 +43,28 @@ const signInUser = asyncHandler(async (req, res) => {
         throw new ApiError(409, "User is already existed")
     }
 
-    //check for dp
-    let dpLocalPath;
-    if (req.file && Array.isArray(req.file.dp) && req.file.dp.length > 0) {
-        dpLocalPath = req.file.dp[0].path
-    }
-    
-
-    //uploade them into cloudinary
-    const dp = await uploadeOnCloudinary(dpLocalPath)
-    console.log(dp)
 
     //create user obj-create entry in db
 
     const user = await User.create({
         fullName,
         password,
-        email,
-        dp: dp?.url || ""
+        email
     })
     const createdUser = User.findById(user._id).select("-password -refreshToken")
     if (!createdUser) {
         throw new ApiError(500, "Something is went wrong while registaring user")
     }
 
+    // const {accessToken}= await generateAccessAndRefreshToken(createdUser._id)
+    // console.log("access token",accessToken)
+
     return res.status(201).json(
         new ApiResponse(200, {
             _id: createdUser._id,
             fullName: createdUser.fullName,
-            email: createdUser.email
+            email: createdUser.email,
+            // accessToken
         }, "User is successfully created")
     );
 
@@ -141,16 +134,24 @@ const forgetPassword = asyncHandler(async (req, res) => {
 
 })
 
-const getUserDetails=asyncHandler(async(req,res)=>{
-    try {
-         const data=await User.find()
-         res.json(data)
-    } catch (error) {
-        throw new ApiError(500,"Server Error")
-    }
-
+const logOutUser=asyncHandler(async(req,res)=>{
+    // console.log("Hello from log Out")
+ const authorizationHeader=req.headers.authorization;
+//  console.log("headers:",req.headers)
+//  console.log("authorizationHeader",authorizationHeader)
+ 
+ if (authorizationHeader) {
+    const token = authorizationHeader.split(' ')[1];
+    // Process the token here
+    console.log('Token:', token);
+     res.status(200).json({message:'Logged Out Successfully'})
+  } else {
+    // Handle the case where the token is missing
+    console.error('Token not found in headers');
+    throw new ApiError( 401, 'Authorization token missing')
+  }
 })
 
 
 
-export { signInUser, logInUser, forgetPassword,getUserDetails }
+export { signInUser, logInUser, forgetPassword,logOutUser }

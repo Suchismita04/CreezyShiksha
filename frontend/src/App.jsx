@@ -12,6 +12,7 @@ import AboutUs from './pages/AboutUs.jsx';
 import SelfAssessment from './pages/SelfAssessment.jsx';
 import QuestionSet from './pages/QuestionSet.jsx';
 import ShowMarks from './pages/ShowMarks.jsx';
+import LogOut from './pages/LogOut.jsx';
 
 function App() {
  
@@ -27,6 +28,7 @@ function App() {
           <Route path="/form/forgetPassword" element={<ForgetPassword/>} />
           <Route path='/collections' element={<Collections/>}/>
           <Route path='/aboutUs' element={<AboutUs/>}/>
+          <Route path="/form/logOut" element={<LogOut/>} />
           <Route path='/selfAssessment' element={<SelfAssessment/>}/>
           <Route path='/QuestionSet/:link' element={<QuestionSet/>}/>
           <Route path='/ShowMarks/:marks' element={<ShowMarks/>}/>

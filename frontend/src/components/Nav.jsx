@@ -40,7 +40,7 @@ const Nav = () => {
       <ul>
 
       
-    <Link className=" f-color" to='/form/login'><FontAwesomeIcon className='large-icon' icon={faCircleUser} /></Link> 
+    <Link className=" f-color" to='/form/logOut'><FontAwesomeIcon className='large-icon' icon={faCircleUser} /></Link> 
      
 
       </ul>
